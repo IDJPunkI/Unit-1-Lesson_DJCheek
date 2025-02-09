@@ -13,11 +13,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private ForceMode forceMode;
     public GameObject spawnPoint;
+    private Dictionary<Item.VegetableType, int> inventory = new Dictionary<Item.VegetableType, int>();
 
     // Start is called before the first frame update
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody>();
+
+        foreach (Item.VegetableType type in System.Enum.GetValues(typeof(Item.VegetableType)))
+        {
+            inventory.Add(type, 0);
+        }
     }
 
     void Update()
@@ -46,6 +52,33 @@ public class PlayerController : MonoBehaviour
     private void Respawn()
     {
         rbPlayer.MovePosition(spawnPoint.transform.position);
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Item"))
+        {
+            Item item = collider.gameObject.GetComponent<Item>();
+            AddItemToInventory(item);
+            PrintInventory();
+        }
+    }
+
+    private void AddItemToInventory(Item item)
+    {
+        inventory[item.typeOfVeggie]++;
+    }
+
+    private void PrintInventory()
+    {
+        string output = "";
+
+        foreach (KeyValuePair<Item.VegetableType, int> pair in inventory)
+        {
+            output += string.Format("{0}: {1}; ", pair.Key, pair.Value);
+        }
+
+        Debug.Log(output);
     }
 
     void OnTriggerExit(Collider collider)
