@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 121734600}
   - component: {fileID: 121734602}
   - component: {fileID: 121734601}
+  - component: {fileID: 121734604}
   - component: {fileID: 121734603}
   m_Layer: 5
   m_Name: CarrotCount
@@ -389,6 +390,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Carrot
+  count:
+    m_InternalValue: 0
+--- !u!114 &121734604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121734599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 279956347
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &129714095
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +866,7 @@ GameObject:
   - component: {fileID: 892179840}
   - component: {fileID: 892179839}
   - component: {fileID: 892179841}
+  - component: {fileID: 892179842}
   m_Layer: 5
   m_Name: RadishCount
   m_TagString: Untagged
@@ -978,6 +1003,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Radish
+  count:
+    m_InternalValue: 0
+--- !u!114 &892179842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892179837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2528665799
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &919960906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,6 +1805,7 @@ GameObject:
   - component: {fileID: 1838654409}
   - component: {fileID: 1838654411}
   - component: {fileID: 1838654410}
+  - component: {fileID: 1838654413}
   - component: {fileID: 1838654412}
   m_Layer: 5
   m_Name: BeetCount
@@ -1894,6 +1943,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Beet
+  count:
+    m_InternalValue: 0
+--- !u!114 &1838654413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838654408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 953438585
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1878479345
 GameObject:
   m_ObjectHideFlags: 0

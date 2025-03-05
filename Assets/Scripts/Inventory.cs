@@ -21,6 +21,6 @@ public class Inventory : MonoBehaviour
     void IncrementItem(Item.VegetableType veggieType)
     {
         CountGUI count = items[(int)veggieType].GetComponent<CountGUI>();
-        count.UpdateCount();
+        count.UpdateCountBroadcast();
     }
 }
