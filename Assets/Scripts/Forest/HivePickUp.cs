@@ -7,18 +7,20 @@ public class HivePickUp : MonoBehaviour
 {
     public delegate void PickUpHive();
     public static event PickUpHive HivePickedUp;
+    private bool pickedUp = false;
 
     private void Start()
     {
-        //NavPlayerMovement.DroppedHive += OnHiveDrop;
+        NavPlayerMovement.DroppedHive += OnHiveDrop;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && !pickedUp)
         {
             HivePickedUp?.Invoke();
             gameObject.SetActive(false);
+            pickedUp = true;
         }
     }
 

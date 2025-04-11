@@ -12,17 +12,26 @@ public class Swarm : MonoBehaviour
 
     private int waypointIndex;
     private NavMeshAgent agent;
+    private Bot bot;
+    private bool hiveNotPickedUp = true;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        bot = GetComponent<Bot>();
+
+        HivePickUp.HivePickedUp += OnHivePickedUp;
 
         agent.SetDestination(waypoints[0].transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnHivePickedUp()
+    {
+        hiveNotPickedUp = false;
+    }
+
+    public void Patrol()
     {
         if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < WAYPOINT_THRESHOLD)
         {
@@ -35,5 +44,17 @@ public class Swarm : MonoBehaviour
         }
 
         agent.SetDestination(waypoints[waypointIndex].transform.position);
+    }
+
+    void Update()
+    {
+        if (hiveNotPickedUp)
+        {
+            Patrol();
+        }
+        else
+        {
+            bot.Pursue();
+        }
     }
 }

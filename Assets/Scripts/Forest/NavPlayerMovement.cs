@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NavPlayerMovement : MonoBehaviour
 {
+    public delegate void DropHive(Vector3 pos);
+    public static event DropHive DroppedHive;
+
     public float speed = 6.0f;
     public float rotationSpeed = 60.0f;
     private Rigidbody playerRb = null;
@@ -25,6 +28,11 @@ public class NavPlayerMovement : MonoBehaviour
 
         translationValue = translation;
         rotateValue = rotation;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DroppedHive.Invoke(transform.position);
+        }
     }
 
     private void FixedUpdate()
