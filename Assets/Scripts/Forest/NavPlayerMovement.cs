@@ -12,19 +12,28 @@ public class NavPlayerMovement : MonoBehaviour
     private Rigidbody playerRb = null;
     private float translationValue = 0;
     private float rotateValue = 0;
+    private Animator animator;
+    private bool dead = false;
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        if (dead)
+        {
+            return;
+        }
         // Get the horizontal and vertical axis.
         // By default they are mapped to the arrow keys.
         // The value is in the range -1 to 1
         float translation = Input.GetAxis("Vertical");
         float rotation = Input.GetAxis("Horizontal");
+
+        animator.SetFloat("speed", translation);
 
         translationValue = translation;
         rotateValue = rotation;
@@ -37,6 +46,11 @@ public class NavPlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (dead)
+        {
+            return;
+        }
+
         // rotates the player
         Vector3 rot = transform.rotation.eulerAngles;
         rot.y += rotateValue * rotationSpeed * Time.deltaTime;
@@ -46,5 +60,14 @@ public class NavPlayerMovement : MonoBehaviour
         // to the speed parameter. Does not affect gravity.
         Vector3 move = transform.forward * translationValue;
         playerRb.velocity = new Vector3(move.x * speed, playerRb.velocity.y, move.z * speed);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Hazard") && dead == false)
+        {
+            dead = true;
+            animator.SetTrigger("died");
+        }
     }
 }
