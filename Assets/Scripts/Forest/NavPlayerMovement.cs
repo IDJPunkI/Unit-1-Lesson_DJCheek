@@ -13,7 +13,9 @@ public class NavPlayerMovement : MonoBehaviour
     private float translationValue = 0;
     private float rotateValue = 0;
     private Animator animator;
-    private bool dead = false;
+    public bool dead = false;
+    private bool onAlert = false;
+    private HivePickUp hivePickUp;
 
     private void Start()
     {
@@ -38,7 +40,7 @@ public class NavPlayerMovement : MonoBehaviour
         translationValue = translation;
         rotateValue = rotation;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && HivePickUp.pickedUp && !HivePickUp.dropped)
         {
             DroppedHive.Invoke(transform.position);
         }
@@ -59,6 +61,12 @@ public class NavPlayerMovement : MonoBehaviour
         // simply moves the player by however much the player is pressing with respect
         // to the speed parameter. Does not affect gravity.
         Vector3 move = transform.forward * translationValue;
+
+        if (translationValue < 0)
+        {
+            move = Vector3.zero;
+        }
+
         playerRb.velocity = new Vector3(move.x * speed, playerRb.velocity.y, move.z * speed);
     }
 
@@ -68,6 +76,24 @@ public class NavPlayerMovement : MonoBehaviour
         {
             dead = true;
             animator.SetTrigger("died");
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Hazard"))
+        {
+            onAlert = true;
+            animator.SetBool("leftEarStand", onAlert);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Hazard"))
+        {
+            onAlert = false;
+            animator.SetBool("leftEarStand", onAlert);
         }
     }
 }
