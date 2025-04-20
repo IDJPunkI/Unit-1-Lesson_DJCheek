@@ -405,6 +405,7 @@ MonoBehaviour:
   speed: 20
   rotationSpeed: 60
   dead: 0
+  lookTarget: {fileID: 1058990065}
 --- !u!4 &160842463
 Transform:
   m_ObjectHideFlags: 0
@@ -491,7 +492,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 12.5
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &199911904 stripped
 Transform:
@@ -3327,7 +3328,7 @@ MonoBehaviour:
     m_Style:
       shape: {fileID: 4300000, guid: c6793350c150f456688e39a81f97364a, type: 2}
       color: {r: 1, g: 0, b: 0, a: 0.5}
-      size: 2
+      size: 10
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1

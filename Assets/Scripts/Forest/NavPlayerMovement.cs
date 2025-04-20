@@ -15,7 +15,9 @@ public class NavPlayerMovement : MonoBehaviour
     private Animator animator;
     public bool dead = false;
     private bool onAlert = false;
-    private HivePickUp hivePickUp;
+    public GameObject lookTarget;
+    private Coroutine smoothLookCoroutine;
+    private GameObject currHazard;
 
     private void Start()
     {
@@ -83,8 +85,20 @@ public class NavPlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Hazard"))
         {
+            if (smoothLookCoroutine != null)
+            {
+                StopCoroutine(smoothLookCoroutine);
+            }
+
             onAlert = true;
             animator.SetBool("leftEarStand", onAlert);
+
+
+            if (currHazard == null)
+            {
+                currHazard = other.gameObject;
+            }
+            lookTarget.transform.position = Vector3.Lerp(lookTarget.transform.position, currHazard.transform.position, 0.08f);
         }
     }
 
@@ -92,8 +106,24 @@ public class NavPlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Hazard"))
         {
+            currHazard = null;
+            smoothLookCoroutine = StartCoroutine("SmoothLookForward");
             onAlert = false;
             animator.SetBool("leftEarStand", onAlert);
         }
+    }
+
+    IEnumerator SmoothLookForward()
+    {
+        Vector3 targetPosition = transform.position + transform.forward * 6;
+
+        while (Vector3.Distance(lookTarget.transform.position, transform.position + targetPosition) > 0.1f)
+        {
+            targetPosition = transform.position + transform.forward * 6;
+            lookTarget.transform.position = Vector3.Lerp(lookTarget.transform.position, targetPosition, 0.08f);
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        lookTarget.transform.position = targetPosition;
     }
 }
