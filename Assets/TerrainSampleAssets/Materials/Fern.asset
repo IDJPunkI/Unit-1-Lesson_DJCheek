@@ -17,22 +17,30 @@ MonoBehaviour:
   m_MaterialReferences: []
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fern
-  m_Shader: {fileID: -6465566751694194690, guid: dfa3b96612ed4df4a97b7fd06217ba23, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _BUILTIN_ALPHATEST_ON _BUILTIN_AlphaClip _DISABLE_DECALS
-    _DISABLE_SSR _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON
+  m_Shader: {fileID: 10606, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
+  - _BUILTIN_ALPHATEST_ON
+  - _BUILTIN_AlphaClip
+  - _DISABLE_DECALS
+  - _DISABLE_SSR
+  - _DISABLE_SSR_TRANSPARENT
+  - _DOUBLESIDED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
-    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPrepass
@@ -40,6 +48,7 @@ Material:
   - TransparentBackface
   - RayTracingPrepass
   - ForwardEmissiveForDeferred
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -73,6 +82,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_E1B0D043:
         m_Texture: {fileID: 2800000, guid: f3661c5aa3d7dc141aebd059ea67047b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Thickness_Map:
@@ -142,6 +155,7 @@ Material:
     - _Cull: 0
     - _CullMode: 0
     - _CullModeForward: 0
+    - _Cutoff: 0.3
     - _DepthOffsetEnable: 0
     - _DiffusionProfileHash: 2.2579067
     - _Diffusion_Profile: 2.2579067
@@ -163,6 +177,8 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
+    - _ShadowStrength: 1
+    - _SquashAmount: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
@@ -177,6 +193,7 @@ Material:
     - _SupportDecals: 0
     - _Surface: 0
     - _SurfaceType: 0
+    - _TranslucencyViewDependency: 0.7
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
@@ -200,6 +217,7 @@ Material:
     - SplatR: {r: 0, g: 0, b: 0, a: 0}
     - Terrain_Origin: {r: 0, g: 0, b: 0, a: 0}
     - Terrain_Scale: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffusionProfileAsset: {r: -0.00000002060262, g: 7.3194675e-27, b: 69972056, a: -3.7115523e+9}
     - _Diffusion_Profile_Asset: {r: -0.00000002060262, g: 7.3194675e-27, b: 69972056, a: -3.7115523e+9}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
@@ -207,4 +225,7 @@ Material:
     - _SSSColor: {r: 0.75029343, g: 0.8962264, b: 0.47770557, a: 0}
     - _Subsurface_Scattering_Color: {r: 1, g: 1, b: 1, a: 0}
     - _Thickness_Remap: {r: 0, g: 1, b: 0, a: 0}
+    - _TranslucencyColor: {r: 0.73, g: 0.85, b: 0.40999997, a: 1}
+    - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
